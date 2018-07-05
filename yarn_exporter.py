@@ -10,6 +10,8 @@ from prometheus_client import make_wsgi_app
 import attr
 import requests
 
+from version import __version__
+
 
 def mega_to_byte(megabyte: int) -> int:
     # convert megabytes to bytes decimal base
@@ -266,6 +268,8 @@ def get_parser():
     parser.add_argument("--host", "-H", help="Exporter host address", default="0.0.0.0")
     parser.add_argument("--collected-apps", "-c", nargs="*",
                         help="Name of applications need to collect running status")
+    parser.add_argument('--version', '-V', action='version', help="Show version info",
+                        version=f'{__version__}')
     return parser
 
 

@@ -1,0 +1,17 @@
+dist: trusty
+sudo: required
+language: python
+python:
+- '3.6'
+install:
+- pip install -r requirements.txt
+- pip install pyinstaller
+script:
+- pyinstaller -F -y -n yarn_exporter yarn_exporter.py
+deploy:
+  provider: releases
+  api_key:
+    secure: ctcSFReZX+vZ8fBgspvNYjkYyHSWLJRIZ2BlFlO0m91JU5E+z3h9LXOkgCKgf+oMVaT8rFFcOct56w5qlt3rOSqBZsgsqUJgBWlftfNgiOebmgD/gjJzx/uFZQ/r1lvn2Qj9K0qEPMQ46vfsejDmHmjX8H6uNtcHIy+qtZRBvMPFl7LI15sFkTt+dMi8ySXUKY+GrOQb/W9MmIU7XcngfI0si4OlxUn5W9Q6ZTkSzCsgVEH/mU2TDwdENt8TVe73SF11R2qoVLbO3nWkMOsOvSumXgdjKpp5734xD9ryJ/pE9GvwmJ6wibOjGiC0GuJtZq1MBJ3U6+EFHmyihzYbh0fXZsBNGWLJ7/traor9GJVMGDSkZK/EbRNgPXu7XDCdTEj5dowP1bHIa5IPAQ/kp+6F5QKQvJleD/3SMeDQzl8fV3p+lLkKrJQvdh5n9uiJpakCHzSQoF+rZU/14pJ04q23WgukLPsRnGqOpQ1Ad8wryX/5GCm2Hpdo3VeWUqhghYNcwKF51b3YkjdXmktaugHT0yKwyyLnY2gyGotkBS/PXRz3/G9CNs9P39KaQ6m6cjolEQ7oEQ3ynVZjCmn3fF5p712Zhpds1/rpgA0g38DmncFSTeJD1iOZc1Z03FrcySFvunu1EYqcTVExSljLt4s2Q90aeEJ2dxNugwxR4M0=
+  file: dist/yarn_exporter
+  on:
+    repo: soloradish/yarn_exporter
